@@ -34,6 +34,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button3 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -98,11 +100,32 @@
             this.listBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBox2_KeyPress);
             this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDoubleClick);
             // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 17;
+            this.listBox3.Location = new System.Drawing.Point(600, 182);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(227, 208);
+            this.listBox3.TabIndex = 5;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(519, 59);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 115);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "编辑第三参数";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 413);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -126,6 +149,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

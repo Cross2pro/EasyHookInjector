@@ -25,7 +25,7 @@ namespace EasyHookInjector
         internal static extern bool IsWow64Process([In] IntPtr process, [Out] out bool wow64Process);
 
 
-        
+        Form2 form2 = new Form2();
         List<string> processname = new List<string>();
         List<int> pid = new List<int>();
         List<DllParameter> dlls = new List<DllParameter>();
@@ -57,6 +57,10 @@ namespace EasyHookInjector
             {
                 var dllName = "EasyHook.dll";
                 var dllPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dllName);
+                if(!File.Exists( dllPath))
+                {
+                    throw new Exception("没有找到Dll文件");
+                }
                 if (!System.Runtime.InteropServices.RuntimeEnvironment.FromGlobalAccessCache(Assembly.LoadFrom(dllPath)))
                 {
                     new System.EnterpriseServices.Internal.Publish().GacInstall(dllPath);
@@ -284,11 +288,15 @@ namespace EasyHookInjector
             //    dlls.Add(tmpdll);
             //}
             //Refreshlist2();
-            StreamReader stream = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"));
-            string json = stream.ReadToEnd();
-            dlls= JsonConvert.DeserializeObject<List<DllParameter>>(json);
-            stream.Close();
-            Refreshlist2();
+            if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
+
+            {
+                StreamReader stream = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"));
+                string json = stream.ReadToEnd();
+                dlls = JsonConvert.DeserializeObject<List<DllParameter>>(json);
+                stream.Close();
+                Refreshlist2();
+            }
             //JsonConvert.SerializeObject(dlls);
 
         }
@@ -367,6 +375,11 @@ namespace EasyHookInjector
                 //msg += $"EntryPoint ： {dlls[tmp.SelectedIndex].methodInfos}\n";
                 MessageBox.Show(msg, title);
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            form2.Show();
         }
     }
 }
